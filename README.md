@@ -12,7 +12,7 @@ This repository contains a list of commands for performing a WiFi Deauthenticati
 ### Usage
 1. Clone the repository:
    ```bash
-   git clone https://github.com/AdityaSodha/Deauthentication-Attack/
+   git clone https://github.com/Adityasinh-Sodha/Deauthentication-Attack/
    ```
 2. Navigate to the project directory:
    ```bash
